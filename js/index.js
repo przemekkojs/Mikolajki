@@ -4,7 +4,7 @@ const closeBtn = document.getElementById('close');
 const popup = document.getElementById("popup");
 const myName = document.getElementById('my-name');
 const personName = document.getElementById('person-name');
-const namesPath = "names.json";
+const namesPath = "./js/names.json";
 let obj = null;
 
 checkBtn.addEventListener("click", displayAnswer);
@@ -14,7 +14,7 @@ popup.addEventListener("click", e => {
 });
 
 function populateSelect() {
-    fetch("/js/names.json")
+    fetch(namesPath)
     .then(response => {
         if (response.ok)           
             return response.json();
