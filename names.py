@@ -1,26 +1,25 @@
 import json
 import random
 
+def check_lists(n1:list[str], n2:list[str]) -> bool:
+    for i in range(len(n1)):
+        name1 = names1[i]
+        name2 = names2[i]
+
+        if name1 == name2:
+            return False
+        
+    return True
+
 names1:list[str] = sorted(["Ola Sz.", "Filip", "Artem", "Alan", "Julka", "Gosia", "Ola Ł.", "Przemek", "Wojtek",
                            "Pani Kazia", "Madzia", "Wiktoria", "Bartek", "Mira", "Ida", "Pani Agnieszka"])
 
 names2:list[str] = names1.copy()
 
-is_bad:bool = True
 names_count:int = len(names1)
 file_path:str = "js/names.json"
 
-while is_bad:
-    is_bad = False
-    
-    for i in range(names_count):
-        name1 = names1[i]
-        name2 = names2[i]
-
-        if name1 == name2:
-            is_bad = True
-            break
-
+while not check_lists(names1, names2):
     random.shuffle(names2)
 
 pairs:dict[str, str] = {}
